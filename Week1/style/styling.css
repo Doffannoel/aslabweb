@@ -1,0 +1,229 @@
+/* Step 1 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Step 2 */
+
+.login-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+}
+
+/* animasi Masuk*/
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #6666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  /* position: relative; */
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e1e1e1;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-group input {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+.forgot-password {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #764ba2;
+}
+
+/* Step 3 */
+
+/* Button Styling */
+.login-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* Divider */
+.divider {
+  margin: 30px 0;
+  position: relative;
+  text-align: center;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e1e1e1;
+}
+
+.divider span {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Social Login */
+.social-login {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.social-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e1e1e1;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social-btn:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.google {
+  color: #db4437;
+}
+
+/* Signup Link */
+.signup-link {
+  color: #666;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link a:hover {
+  color: #764ba2;
+}
