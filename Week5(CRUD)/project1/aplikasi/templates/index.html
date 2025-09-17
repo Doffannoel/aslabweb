@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daftar Mahasiswa</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Daftar Mahasiswa</h1>
+
+      <!-- =========================================
+           BAGIAN BARU (SETELAH CRUD DITAMBAHKAN)
+           -----------------------------------------
+           Dulu: hanya ada tabel daftar mahasiswa
+           Sekarang: ditambahkan form untuk TAMBAH mahasiswa
+           ========================================= -->
+      <form method="post" action="{% url 'mahasiswa' %}" style="margin-bottom:20px;">
+        {% csrf_token %}
+        <!-- field hidden untuk menandakan aksi = tambah -->
+        <input type="hidden" name="action" value="add">
+
+        <!-- input untuk data mahasiswa baru -->
+        <input type="text" name="nim" placeholder="NIM" required>
+        <input type="text" name="firstname" placeholder="Nama Depan" required>
+        <input type="text" name="lastname" placeholder="Nama Belakang" required>
+        <input type="text" name="jurusan" placeholder="Jurusan" required>
+
+        <!-- tombol submit -->
+        <button type="submit">Tambah</button>
+      </form>
+
+      <!-- =========================================
+           BAGIAN TABEL MAHASISWA
+           -----------------------------------------
+           Dulu: hanya menampilkan data (READ ONLY)
+           Sekarang: setiap baris bisa di-EDIT & DELETE
+           ========================================= -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Aksi</th> <!-- Tambahan kolom untuk tombol Update & Delete -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in mymahasiswa %}
+          <tr>
+            <!-- form per baris agar bisa update / delete -->
+            <form method="post" action="{% url 'mahasiswa' %}">
+              {% csrf_token %}
+              <td>
+                <!-- hidden id untuk identifikasi data mahasiswa -->
+                <input type="hidden" name="id" value="{{ m.id }}">
+                <!-- field nim editable -->
+                <input type="text" name="nim" value="{{ m.nim }}">
+              </td>
+              <td>
+                <!-- field nama depan & belakang editable -->
+                <input type="text" name="firstname" value="{{ m.firstname }}">
+                <input type="text" name="lastname" value="{{ m.lastname }}">
+              </td>
+              <td>
+                <!-- field jurusan editable -->
+                <input type="text" name="jurusan" value="{{ m.jurusan }}">
+              </td>
+              <td>
+                <!-- tombol aksi update & delete -->
+                <button type="submit" name="action" value="update">Update</button>
+                <button type="submit" name="action" value="delete">Delete</button>
+              </td>
+            </form>
+          </tr>
+          {% empty %}
+          <tr>
+            <!-- tampilkan pesan jika data kosong -->
+            <td colspan="4">Belum ada data.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- footer tetap sama -->
+      <p class="footer">Contoh CRUD sederhana dengan Django.</p>
+    </div>
+  </body>
+</html>
