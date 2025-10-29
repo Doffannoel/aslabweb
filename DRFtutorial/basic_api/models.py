@@ -14,6 +14,7 @@ class DRFPost(models.Model):
     author = models.CharField(max_length = 100)
     uploaded = models.DateTimeField(auto_now_add = True)
     rating = models.CharField(choices = Grade, default = 'average', max_length = 50)
+    image = models.ImageField(upload_to='image/', blank=True, null=True, default=None)
 
     class Meta:
         ordering = ['uploaded']

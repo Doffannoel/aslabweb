@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+</head>
+<body>
+    <h1>Edit Book</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Name:</label>
+        <input type="text" name="name" value="{{ post.name }}" required><br>
+        <label>Author:</label>
+        <input type="text" name="author" value="{{ post.author }}" required><br>
+        <label>Rating:</label>
+        <select name="rating">
+            <option value="excellent" {% if post.rating == 'excellent' %}selected{% endif %}>Excellent</option>
+            <option value="average" {% if post.rating == 'average' %}selected{% endif %}>Average</option>
+            <option value="bad" {% if post.rating == 'bad' %}selected{% endif %}>Bad</option>
+        </select><br>
+        <label>Image:</label>
+        <input type="file" name="image" accept="image/*"><br>
+        <button type="submit">Save</button>
+        <a href="{% url 'post_list' %}">Cancel</a>
+    </form>
+</body>
+</html>
