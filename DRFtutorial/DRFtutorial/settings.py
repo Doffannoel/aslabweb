@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'basic_api',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +126,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS Settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
